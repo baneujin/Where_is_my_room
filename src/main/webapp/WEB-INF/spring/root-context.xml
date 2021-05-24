@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+		
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"/>
+			<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1"/>
+			<property name="username" value="team4"/>
+			<property name="password" value="team4"/>
+		</bean>
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+			<constructor-arg ref="hikariConfig" />
+		</bean>
+
+
+	<bean id="userSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.org.team4.dto" />
+
+	<bean id="userDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="userSqlSession"
+		p:mapperInterface="com.org.team4.dao.UserDAO" />
+
+	<bean id="boardSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.org.team4.dto" />
+
+	<bean id="boardDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="boardSqlSession"
+		p:mapperInterface="com.org.team4.dao.BoardDAO" />
+
+	<bean id="commentsSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.org.team4.dto" />
+
+	<bean id="commentsDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="commentsSqlSession"
+		p:mapperInterface="com.org.team4.dao.CommentsDAO" />
+
+	<bean id="messageSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.org.team4.dto" />
+
+	<bean id="messageDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="messageSqlSession"
+		p:mapperInterface="com.org.team4.dao.MessageDAO" />
+
+	<bean id="filesSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.org.team4.dto" />
+
+	<bean id="filesDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="filesSqlSession"
+		p:mapperInterface="com.org.team4.dao.FilesDAO" />
+
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler"
+			path="/chat" />
+	</websocket:handlers>
+
+	<bean id="chatHandler"
+		class="com.org.team4.handler.ChatWebSocketHandler" />
+
+</beans>
