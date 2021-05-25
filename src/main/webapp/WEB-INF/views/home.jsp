@@ -1,9 +1,15 @@
+<%@page import="com.org.team4.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false"
     %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%
+
+	UserDTO userInfo = new UserDTO(1, "1111", "홍길동", "낙타", "test@test.com", "남");
+	session.setAttribute("userInfo", userInfo);
+	response.sendRedirect("./");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
