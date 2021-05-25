@@ -16,14 +16,14 @@ function dateFormat(date) {
 };
 
 
-// 채팅방의 메세지 내역 보여주는 함수
+//채팅방의 메세지 내역 보여주는 함수
 function getMessage(messageId) { 
 	
 	window.messageId = messageId;
+	window.lastChatHeight = 0;
 	
 	window.lastChatMessageId = 21; // 마지막으로 읽은 메시지 아이디
 	window.chatMessageFindAll = false; // 채팅방의 메시지를 다 읽었는지
-	window.lastChatHeight = 0;
 	
 	let userId = document.getElementById('user-id').value;
 	
@@ -75,7 +75,9 @@ function getMessage(messageId) {
 			}
 		}
 		$('.message-log').append(plusMsg);
-		window.lastChatId = readList[readList.length-1].rnum + 1;
+		window.lastChatMessageId = readList[0].rnum + 1;
+		console.log('getMessage에서 lastChatMessageId : ' + lastChatMessageId);
+		console.log(readList);
 		$('.message-log').scrollTop($('.message-log')[0].scrollHeight);
 			
 	}
@@ -96,7 +98,10 @@ function getMessageAppend() {
 			req.send();
 			
 			req.onload = ()=>{
-				
+				console.log('window.lastChatId' + window.lastChatId);
+				console.log('window.findAll' + window.findAll);
+				console.log('window.lastChatMessageId' + window.lastChatMessageId);
+				console.log('window.chatMessageFindAll' + window.chatMessageFindAll);
 				let res = JSON.parse(req.responseText);
 				let moveLength = 0;
 				let readList = res;
@@ -151,8 +156,9 @@ window.onload = ()=>{
 	
 	window.lastChatId = 16;  //채팅방의 마지막 읽은 채팅방 번호
 	window.findAll = false; // 채팅방 다 찾았는지 여부
+
 	
-	// 채팅방 목록 스크롤 될 경우
+	//채팅방 목록 스크롤 될 경우
 	$(".message-list").scroll(()=> {
 		
 		if($(".message-list").scrollTop() >= $(".message-list").prop('scrollHeight') - $(".message-list").innerHeight() && window.findAll == false){
@@ -200,12 +206,5 @@ window.onload = ()=>{
 			getMessageAppend(window.messageId, window.lastChatMessageId);
 		}	
 	});
-	
-	
-	
-	
-	
-	
-	
 	
 };
