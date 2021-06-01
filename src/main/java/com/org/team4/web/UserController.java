@@ -35,10 +35,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
 	private JavaMailSender mailSender;
 
 	@Autowired
+
 	// private BCryptPasswordEncoder pwEncoder;
 
 	@GetMapping("/login")
@@ -117,9 +117,9 @@ public class UserController {
 	public String withdraw(@ModelAttribute LoginDTO loginDTO, Model model, HttpSession session) throws Exception {
 
 		log.info(loginDTO.toString());
-		
+
 		int res = userService.withdrawUser(loginDTO);
-		
+
 		if (res != 0) {
 			session.invalidate();
 
@@ -129,10 +129,10 @@ public class UserController {
 			model.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			model.addAttribute("url", "../");
 		}
-		
+
 		return "result";
 	}
-	
+
 	@Auth
 	@GetMapping("/info")
 	public String info(HttpSession session) {
@@ -171,7 +171,7 @@ public class UserController {
 
 			model.addAttribute("msg", "정보가 수정되었습니다.");
 			model.addAttribute("url", "../");
-			
+
 		} else {
 			model.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			model.addAttribute("url", "../");
@@ -179,7 +179,7 @@ public class UserController {
 
 		return "result";
 	}
-	
+
 	@Auth
 	@GetMapping("/updateEmail")
 	public String updateEmail(HttpSession session) {
@@ -194,7 +194,8 @@ public class UserController {
 
 	@Auth
 	@PostMapping("/updateEmail")
-	public String updateEmail(@ModelAttribute UpdateEmailDTO updateEmailDTO, Model model, HttpSession session) throws Exception {
+	public String updateEmail(@ModelAttribute UpdateEmailDTO updateEmailDTO, Model model, HttpSession session)
+			throws Exception {
 
 		long res = userService.updateEmail(updateEmailDTO);
 
@@ -203,7 +204,7 @@ public class UserController {
 
 			model.addAttribute("msg", "이메일이 변경되었습니다. 다시 로그인하세요");
 			model.addAttribute("url", "../");
-			
+
 		} else {
 			model.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			model.addAttribute("url", "../");
@@ -211,7 +212,7 @@ public class UserController {
 
 		return "result";
 	}
-	
+
 	@Auth
 	@GetMapping("/updatePassword")
 	public String updatePassword(HttpSession session) {
@@ -225,7 +226,8 @@ public class UserController {
 	}
 
 	@PostMapping("/updatePassword")
-	public String updatePassword(@ModelAttribute UpdatePasswordDTO updatePasswordDTO, Model model, HttpSession session) throws Exception {
+	public String updatePassword(@ModelAttribute UpdatePasswordDTO updatePasswordDTO, Model model, HttpSession session)
+			throws Exception {
 
 		long res = userService.updatePassword(updatePasswordDTO);
 
@@ -234,7 +236,7 @@ public class UserController {
 
 			model.addAttribute("msg", "비밀번호가 변경되었습니다. 다시 로그인하세요");
 			model.addAttribute("url", "../");
-			
+
 		} else {
 			model.addAttribute("msg", "현재 비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			model.addAttribute("url", "../");

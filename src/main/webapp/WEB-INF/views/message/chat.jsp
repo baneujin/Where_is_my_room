@@ -36,52 +36,44 @@
 
 <!-- app -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<!-- <script src="../resources/js/global.js"></script> -->
 <script src="../resources/js/message.js" ></script>
+<!-- <script src="../resources/js/global.js"></script> -->
 
 </head>
 <body>
+	<div class="popup-container">
+	</div>
 	<header class="page-header">
 		<div class="header-logo">
-			<a href="/team4/"> <img src="../resources/img/icon.png"
+			<a href="./index.html"> <img src="../resources/img/icon.png"
 				alt="Logo" />
 			</a>
 		</div>
 		<div class="header-menu">
 			<nav class="header-navigation">
-				<a href="/team4/map">지도</a> 
-				<a href="/team4/board/enroll">방 내놓기</a> 
-				<a href="/team4/qna">Q&amp;A</a>
+				<a href="/project/map">지도</a> <a href="/project/boards/insert">방
+					내놓기</a> <a href="/project/qna">Q&amp;A</a>
 			</nav>
 			<div class="header-profile dropdown">
 				<button type="button" class="dropdown-button">
-					<img src="https://avatars.githubusercontent.com/u/50897259?v=4" alt="Profile Image" draggable="false" />
+					<img src="https://avatars.githubusercontent.com/u/50897259?v=4"
+						alt="Profile Image" draggable="false" />
 				</button>
 				<div class="dropdown-menu">
-					<c:choose>
-						<c:when test="${sessionScope.userInfo.nickname ne null}">
-							<h3>
-								반갑습니다 :) <strong>${sessionScope.userInfo.nickname}</strong> 님
-							</h3>
-							<ul>
-								<li><a href="/team4/users/info">내 정보 관리</a></li>
-								<li><a href="#">내가 등록한 방</a></li>
-								<li><a href="#">최근 본 방</a></li>
-								<li><a href="/team4/messages">메시지</a></li>
-							</ul>
-							<ul>
-								<li><a href="/team4/users/logout">로그아웃</a></li>
-							</ul>
-						</c:when>
-						<c:otherwise>
-							<h3>로그인 후 이용해보세요!</h3>
-							<ul>
-								<li>
-									<a href="/team4/users/login">로그인 및 회원가입</a>
-								</li>
-							</ul>
-						</c:otherwise>
-					</c:choose>
+					<h3>
+						<!-- 세션 없을 시  : <a href="/project/users/login">Sign in</a> -->
+						반갑습니다 :) <strong>${sessionScope.userInfo.name}</strong> 님
+					</h3>
+					<ul>
+						<li><a href="#">내 정보</a></li>
+						<li><a href="#">내가 등록한 방</a></li>
+						<li><a href="#">최근 본 방</a></li>
+						<li><a href="#">쪽지</a></li>
+					</ul>
+					<ul>
+						<li><a href="/project/users/logout">로그아웃</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -127,7 +119,7 @@
 					<div style="display:flex; flex-direction: row; justify-content: space-between;">
 						<h2>내용</h2>
 						<div>
-							<button class="delete-btn" onclick="deleteMsg()">나가기</button>
+							<button class="delete-btn" onclick="deleteMsg()">방 나가기</button>
 							<button class="list-btn" onclick="listOpen()">쪽지함</button>
 						</div>
 					</div>
@@ -146,7 +138,9 @@
 		</div>
 	</section>
 
+
 	<!-- app -->
 	<script src="../resources/js/dropdown-menu.js"></script>
+	
 </body>
 </html>
