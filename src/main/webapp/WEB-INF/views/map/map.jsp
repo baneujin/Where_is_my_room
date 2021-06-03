@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!-- description -->
 <meta charset="UTF-8" />
 <meta name="keywords" content="Where is my room" />

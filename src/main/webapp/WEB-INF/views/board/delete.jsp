@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +21,11 @@
 	rel="stylesheet" />
 
 <!-- styles -->
-<link rel="stylesheet" href="resources/css/reset.css" />
-<link rel="stylesheet" href="resources/css/grid.min.css" />
-<link rel="stylesheet" href="resources/css/header.css" />
-<link rel="stylesheet" href="resources/css/footer.css" />
-<link rel="stylesheet" href="resources/css/dropdown.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/reset.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/grid.min.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/header.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/footer.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/dropdown.css" />
 
 <!-- favicon -->
 <link rel="shortcut icon" href="resources/img/favicon.ico"
@@ -37,15 +38,15 @@
 <body>
 	<header class="page-header">
 		<div class="header-logo">
-			<a href="/team4/"> <img src="../resources/img/icon.png"
+			<a href="${contextPath}/"> <img src="${contextPath}/resources/img/icon.png"
 				alt="Logo" />
 			</a>
 		</div>
 		<div class="header-menu">
 			<nav class="header-navigation">
-				<a href="/team4/map">지도</a> 
-				<a href="/team4/board/enroll">방 내놓기</a> 
-				<a href="/team4/qna">Q&amp;A</a>
+				<a href="${contextPath}/map">지도</a> 
+				<a href="${contextPath}/boards/enroll">방 내놓기</a> 
+				<a href="${contextPath}/qna">Q&amp;A</a>
 			</nav>
 			<div class="header-profile dropdown">
 				<button type="button" class="dropdown-button">
@@ -58,20 +59,20 @@
 								반갑습니다 :) <strong>${sessionScope.userInfo.nickname}</strong> 님
 							</h3>
 							<ul>
-								<li><a href="/team4/users/info">내 정보 관리</a></li>
+								<li><a href="${contextPath}/users/info">내 정보 관리</a></li>
 								<li><a href="#">내가 등록한 방</a></li>
 								<li><a href="#">최근 본 방</a></li>
-								<li><a href="/team4/messages">메시지</a></li>
+								<li><a href="${contextPath}/messages">메시지</a></li>
 							</ul>
 							<ul>
-								<li><a href="/team4/users/logout">로그아웃</a></li>
+								<li><a href="${contextPath}/users/logout">로그아웃</a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<h3>로그인 후 이용해보세요!</h3>
 							<ul>
 								<li>
-									<a href="/team4/users/login">로그인 및 회원가입</a>
+									<a href="${contextPath}/users/login">로그인 및 회원가입</a>
 								</li>
 							</ul>
 						</c:otherwise>

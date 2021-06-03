@@ -29,18 +29,25 @@ $(document).ready(()=>{
 		}
 	});
 	$('#delete').on('click',()=>{
+		var confirmed = confirm('정말로 삭제하시겠습니까?');
+		if(confirmed){
 		$.ajax({
 			url: "/team4/boards/" + getBoardNumber(),
             method: "DELETE"
 		}).done(function (data, textStatus, xhr) {
 		    switch(xhr.status){
+		    
 		        case 204:
 		        	location.href="/team4";
+		            alert('삭제되었습니다.');
 		            break;
     		}
 		}).fail(function (data, textStatus, xhr){
 			alert("권한이 없습니다");
 		});
+		
+		}
+		
 	});
 	
 	$('#update').on('click',()=>{

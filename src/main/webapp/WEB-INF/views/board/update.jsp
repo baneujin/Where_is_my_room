@@ -48,14 +48,14 @@ let contractType = "${boardDetailDTO.contractType}";
 <body>
 	<header class="page-header">
 		<div class="header-logo">
-			<a href="/team4/"> <img src="${contextPath}/resources/img/icon.png"
+			<a href="${contextPath}/"> <img src="${contextPath}/resources/img/icon.png"
 				alt="Logo" />
 			</a>
 		</div>
 		<div class="header-menu">
 			<nav class="header-navigation">
-				<a href="/team4/map">지도</a> <a href="${contextPath}/boards/enroll">방 내놓기</a>
-				<a href="/team4/qna">Q&amp;A</a>
+				<a href="${contextPath}/map">지도</a> <a href="${contextPath}/boards/enroll">방 내놓기</a>
+				<a href="${contextPath}/qna">Q&amp;A</a>
 			</nav>
 			<div class="header-profile dropdown">
 				<button type="button" class="dropdown-button">
@@ -69,17 +69,17 @@ let contractType = "${boardDetailDTO.contractType}";
 								반갑습니다 :) <strong>${sessionScope.userInfo.nickname}</strong> 님
 							</h3>
 							<ul>
-								<li><a href="/team4/users/info">내 정보 관리</a></li>
-								<li><a href="/team4/messages">메시지</a></li>
+								<li><a href="${contextPath}/users/info">내 정보 관리</a></li>
+								<li><a href="${contextPath}/messages">메시지</a></li>
 							</ul>
 							<ul>
-								<li><a href="/team4/users/logout">로그아웃</a></li>
+								<li><a href="${contextPath}/users/logout">로그아웃</a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<h3>로그인 후 이용해보세요!</h3>
 							<ul>
-								<li><a href="/team4/users/login">로그인 및 회원가입</a></li>
+								<li><a href="${contextPath}/users/login">로그인 및 회원가입</a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>

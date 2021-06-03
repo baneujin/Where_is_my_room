@@ -22,30 +22,30 @@
 	rel="stylesheet" />
 
 <!-- styles -->
-<link rel="stylesheet" href="../resources/css/reset.css" />
-<link rel="stylesheet" href="../resources/css/grid.min.css" />
-<link rel="stylesheet" href="../resources/css/header.css" />
-<link rel="stylesheet" href="../resources/css/footer.css" />
-<link rel="stylesheet" href="../resources/css/dropdown.css" />
-<link rel="stylesheet" href="../resources/css/boarddetail.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/reset.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/grid.min.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/header.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/footer.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/dropdown.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/boarddetail.css" />
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="${contextPath}/resources/css/popup.css" />
 <link rel="stylesheet" href="${contextPath}/resources/css/modal.css" />
 
 <!-- favicon -->
-<link rel="shortcut icon" href="../resources/img/favicon.ico"
+<link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico"
 	type="image/x-icon" />
-<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon" />
 
 <!-- app -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9dad515bc29f7c64e401203f2300d728&libraries=services"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="../resources/js/global.js"></script>
-<script src="../resources/js/detail.js"></script>
-<script src="../resources/js/modal.js"></script>
+<script src="${contextPath}/resources/js/global.js"></script>
+<script src="${contextPath}/resources/js/detail.js"></script>
+<script src="${contextPath}/resources/js/modal.js"></script>
 <script>
 	let latitude = "${boardDetailDTO.latitude}";
 	let longitude = "${boardDetailDTO.longitude}";
@@ -60,14 +60,14 @@
 	<div class="popup-container"></div>
 	<header class="page-header">
 		<div class="header-logo">
-			<a href="/team4/"> <img src="../resources/img/icon.png"
+			<a href="${contextPath}/"> <img src="${contextPath}/resources/img/icon.png"
 				alt="Logo" />
 			</a>
 		</div>
 		<div class="header-menu">
 			<nav class="header-navigation">
-				<a href="/team4/map">지도</a> <a href="/team4/board/enroll">방 내놓기</a>
-				<a href="/team4/qna">Q&amp;A</a>
+				<a href="${contextPath}/map">지도</a> <a href="${contextPath}/boards/enroll">방 내놓기</a>
+				<a href="${contextPath}/qna">Q&amp;A</a>
 			</nav>
 			<div class="header-profile dropdown">
 				<button type="button" class="dropdown-button">
@@ -81,19 +81,19 @@
 								반갑습니다 :) <strong>${sessionScope.userInfo.nickname}</strong> 님
 							</h3>
 							<ul>
-								<li><a href="/team4/users/info">내 정보 관리</a></li>
+								<li><a href="${contextPath}/users/info">내 정보 관리</a></li>
 								<li><a href="#">내가 등록한 방</a></li>
 								<li><a href="#">최근 본 방</a></li>
-								<li><a href="/team4/messages">메시지</a></li>
+								<li><a href="${contextPath}/messages">메시지</a></li>
 							</ul>
 							<ul>
-								<li><a href="/team4/users/logout">로그아웃</a></li>
+								<li><a href="${contextPath}/users/logout">로그아웃</a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<h3>로그인 후 이용해보세요!</h3>
 							<ul>
-								<li><a href="/team4/users/login">로그인 및 회원가입</a></li>
+								<li><a href="${contextPath}/users/login">로그인 및 회원가입</a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>
@@ -234,6 +234,6 @@
 			<button id="modal-close-btn">취소</button>
 		</div>
 	</div>
-	<script src="../resources/js/dropdown-menu.js"></script>
+	<script src="${contextPath}/resources/js/dropdown-menu.js"></script>
 </body>
 </html>

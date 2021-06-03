@@ -2,6 +2,7 @@
    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,26 +22,26 @@
    rel="stylesheet" />
 
 <!-- styles -->
-<link rel="stylesheet" href="../resources/css/reset.css" />
-<link rel="stylesheet" href="../resources/css/grid.min.css" />
-<link rel="stylesheet" href="../resources/css/header.css" />
-<link rel="stylesheet" href="../resources/css/footer.css" />
-<link rel="stylesheet" href="../resources/css/dropdown.css" />
-<link rel="stylesheet" href="../resources/css/popup.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/reset.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/grid.min.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/header.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/footer.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/dropdown.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/popup.css" />
 <!-- 해당 페이지의 css 적용! style 지우고 해당 css 입력! -->
-<link rel="stylesheet" href="../resources/css/chat.css" />
+<link rel="stylesheet" href="${contextPath}/resources/css/chat.css" />
 
 <!-- favicon -->
-<link rel="shortcut icon" href="../resources/img/favicon.ico"
+<link rel="shortcut icon" href="${contextPath}/resources/img/favicon.ico"
    type="image/x-icon" />
-<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="${contextPath}/resources/img/favicon.ico" type="image/x-icon" />
 
 <!-- app -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    window.userId = ${sessionScope.userInfo.id};
 </script>
-<script src="../resources/js/message.js" ></script>
+<script src="${contextPath}/resources/js/message.js" ></script>
 
 
 </head>
@@ -49,14 +50,14 @@
    </div>
    <header class="page-header">
       <div class="header-logo">
-         <a href="./index.html"> <img src="../resources/img/icon.png"
+         <a href="./index.html"> <img src="${contextPath}/resources/img/icon.png"
             alt="Logo" />
          </a>
       </div>
       <div class="header-menu">
          <nav class="header-navigation">
-            <a href="/project/map">지도</a> <a href="/project/boards/insert">방
-               내놓기</a> <a href="/project/qna">Q&amp;A</a>
+            <a href="${contextPath}/map">지도</a> <a href="${contextPath}/boards/enroll">방
+               내놓기</a> <a href="${contextPath}/qna">Q&amp;A</a>
          </nav>
          <div class="header-profile dropdown">
             <button type="button" class="dropdown-button">
@@ -75,7 +76,7 @@
                   <li><a href="#">쪽지</a></li>
                </ul>
                <ul>
-                  <li><a href="/project/users/logout">로그아웃</a></li>
+                  <li><a href="${contextPath}/users/logout">로그아웃</a></li>
                </ul>
             </div>
          </div>
@@ -122,7 +123,7 @@
 
 
    <!-- app -->
-   <script src="../resources/js/dropdown-menu.js"></script>
+   <script src="${contextPath}/resources/js/dropdown-menu.js"></script>
    
 </body>
 </html>
