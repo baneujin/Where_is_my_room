@@ -15,6 +15,11 @@ local.properties
 .recommenders
 .target/
 
+<<<<<<< HEAD
+=======
+*.properties
+
+>>>>>>> branch 'develop' of https://github.com/Hyundai-IT-E-Team4/where_is_my_room.git
 # ignore properties file
 config.properties
 
